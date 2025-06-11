@@ -4,8 +4,9 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using System;
 using System.Data.Entity;
-using System.Data.SQLite;
+
 using Bonobo.Git.Server.Helpers;
+using Microsoft.Data.Sqlite;
 
 namespace Bonobo.Git.Server.Data.Update.Sqlite
 {
@@ -55,7 +56,7 @@ namespace Bonobo.Git.Server.Data.Update.Sqlite
                 _db.ExecuteSqlCommand("SELECT Count([Id]) = -1 FROM User");
                 return true;
             }
-            catch (SQLiteException)
+            catch (SqliteException)
             {
                 // the column does not exist!
                 return false;
